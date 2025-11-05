@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { HeroSpotlight } from "@/components/HeroSpotlight";
 import { SortTabs } from "@/components/SortTabs";
 import { TokenCard } from "@/components/TokenCard";
-import { TOKENS } from "@/lib/mock-data";
+import { tokens } from "@/lib/mock-data";
 import { motion } from "framer-motion";
 import { Search, BarChart, Share2 } from "lucide-react";
 
@@ -62,7 +62,7 @@ const Index = () => {
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-heading">Trending Now</h2>
               <SortTabs />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
-                {TOKENS.map((token) => (
+                {tokens.map((token) => (
                   <TokenCard key={token.id} token={token} />
                 ))}
               </div>

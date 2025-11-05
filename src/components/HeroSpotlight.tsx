@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { TOKENS, Token } from "@/lib/mock-data";
+import { tokens, Token } from "@/lib/mock-data";
 import { Button } from "./ui/button";
 import { Globe, Send, Twitter } from "lucide-react";
 
@@ -13,7 +13,7 @@ const formatNumber = (num: number) => {
 
 export const HeroSpotlight = () => {
   const [currentTokenIndex, setCurrentTokenIndex] = useState(0);
-  const spotlightTokens = TOKENS.slice(0, 3);
+  const spotlightTokens = tokens.slice(0, 3);
 
   useEffect(() => {
     const interval = setInterval(() => {
