@@ -21,6 +21,7 @@ export default {
       fontFamily: {
         sans: ["Inter", "sans-serif"],
         heading: ["'Plus Jakarta Sans'", "sans-serif"],
+        logo: ["Pacifico", "cursive"],
       },
       colors: {
         border: "hsl(var(--border))",

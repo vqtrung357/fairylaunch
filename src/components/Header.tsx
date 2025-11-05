@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <header className="px-4 lg:px-6 h-16 flex items-center bg-transparent sticky top-0 z-50 backdrop-blur-lg border-b border-white/10">
       <Link to="/" className="flex items-center justify-center">
-        <span className="text-xl font-bold font-heading">Fairy Launch ✨</span>
+        <span className="text-2xl font-logo text-white">Fairy Launch ✨</span>
       </Link>
       <nav className="ml-auto flex items-center gap-4 sm:gap-6">
         <Link
