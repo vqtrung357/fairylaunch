@@ -13,25 +13,25 @@ export const Header = ({ onConnectClick }: HeaderProps) => {
       </Link>
       <nav className="ml-auto flex items-center gap-4 sm:gap-6">
         <Link
-          to="#"
+          to="/discover"
           className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           Discover
         </Link>
         <Link
-          to="#"
+          to="/launch"
           className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           Launch
         </Link>
         <Link
-          to="#"
+          to="/docs"
           className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           Docs
         </Link>
         <Link
-          to="#"
+          to="/about"
           className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
         >
           About
