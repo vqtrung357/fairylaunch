@@ -136,13 +136,12 @@ const Index = () => {
                 A guided, fair, and delightful way to launch your idea. Our magical launchpad (UI demo) helps you prep branding, lore, and socials—no code required.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button size="lg" className="relative overflow-hidden bg-[#B79CFF] hover:bg-[#a78bff] text-[#0B0A12] font-semibold rounded-full px-8 py-6 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD876]/70">
-                  <Sparkles />
+                <MagicButton>
                   Start Launch Wizard
-                </Button>
-                <Button variant="ghost" size="lg" className="bg-white/10 hover:bg-white/15 border border-white/20 rounded-full px-8 py-6 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD876]/70">
+                </MagicButton>
+                <GlassButton>
                   See How It Works
-                </Button>
+                </GlassButton>
               </div>
               <p className="mt-6 text-xs text-muted-foreground">UI demo • No on-chain actions • Designed for Solana creators</p>
             </div>
@@ -207,7 +206,7 @@ const Index = () => {
                 <AccordionItem value="item-2">
                   <AccordionTrigger>What fees does Fairy Launch charge?</AccordionTrigger>
                   <AccordionContent>We charge a small, transparent platform fee on created liquidity pools. This helps us maintain the platform and develop new features. There are no hidden costs for creators or investors.</AccordionContent>
-                </AccordionItem>
+                </Iframe>
                 <AccordionItem value="item-3">
                   <AccordionTrigger>How do you ensure token safety?</AccordionTrigger>
                   <AccordionContent>While we provide tools for transparency like liquidity locks and audit reports, always do your own research (DYOR). We aim to give you the best data, but cannot guarantee the success or safety of any project.</AccordionContent>
