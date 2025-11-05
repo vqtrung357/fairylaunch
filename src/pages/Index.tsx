@@ -201,7 +201,7 @@ const Index = () => {
             <div className="w-full max-w-3xl text-center backdrop-blur-xl bg-white/10 border border-white/15 rounded-3xl shadow-[0_0_60px_rgba(183,156,255,0.15)] p-8 md:p-12">
               <h2 className="text-4xl font-bold font-heading">Launch Your Token</h2>
               <p className="mt-4 max-w-xl mx-auto text-muted-foreground">
-                A guided, fair, and delightful way to launch your idea. Our magical launchpad (UI demo) helps you prep branding, lore, and socials—no code required.
+                Bring your vision to life with a guided, fair, and delightful launch experience. Our magical launchpad helps you prepare your branding, lore, and socials—no code required.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <MagicButton>
@@ -211,7 +211,7 @@ const Index = () => {
                   See How It Works
                 </GlassButton>
               </div>
-              <p className="mt-6 text-xs text-muted-foreground">UI demo • No on-chain actions • Designed for Solana creators</p>
+              <p className="mt-6 text-xs text-muted-foreground">Transparent & Secure • Designed for Solana Creators</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
               {[
