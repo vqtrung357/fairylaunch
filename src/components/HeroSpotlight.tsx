@@ -30,7 +30,7 @@ export const HeroSpotlight = () => {
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
           <motion.div key={token.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <img src={token.avatar} alt={token.name} className="w-24 h-24 rounded-full mb-4 border-2 border-primary" />
-            <h2 className="text-4xl font-bold">{token.name}</h2>
+            <h2 className="text-4xl font-bold font-heading">{token.name}</h2>
             <p className="text-xl text-muted-foreground">${token.ticker}</p>
             <div className="flex gap-2 mt-4">
                 {token.socials.web && <Button variant="outline" size="icon" className="rounded-full"><Globe className="w-4 h-4" /></Button>}

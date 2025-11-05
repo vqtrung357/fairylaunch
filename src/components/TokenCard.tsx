@@ -25,7 +25,7 @@ export const TokenCard = ({ token }: TokenCardProps) => {
       <div className="flex items-center gap-3">
         <img src={token.avatar} alt={token.name} className="w-12 h-12 rounded-full" />
         <div className="flex-grow">
-          <h3 className="font-bold text-lg">{token.name}</h3>
+          <h3 className="font-bold text-lg font-heading">{token.name}</h3>
           <p className="text-sm text-muted-foreground">${token.ticker}</p>
         </div>
         <div className="flex gap-1">
