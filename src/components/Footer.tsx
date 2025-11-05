@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Twitter, Send, Book } from "lucide-react";
 
 export const Footer = () => {
@@ -9,15 +8,15 @@ export const Footer = () => {
       </p>
       <nav className="sm:ml-auto flex gap-4 sm:gap-6 items-center">
         <div className="flex gap-4">
-            <Link to="#" className="text-muted-foreground hover:text-foreground">
+            <a href="#" className="text-muted-foreground hover:text-foreground">
                 <Twitter className="h-5 w-5" />
-            </Link>
-            <Link to="#" className="text-muted-foreground hover:text-foreground">
+            </a>
+            <a href="#" className="text-muted-foreground hover:text-foreground">
                 <Send className="h-5 w-5" />
-            </Link>
-            <Link to="#" className="text-muted-foreground hover:text-foreground">
+            </a>
+            <a href="#" className="text-muted-foreground hover:text-foreground">
                 <Book className="h-5 w-5" />
-            </Link>
+            </a>
         </div>
       </nav>
     </footer>
