@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { HeroSpotlight } from "@/components/HeroSpotlight";
 import { SortTabs } from "@/components/SortTabs";
 import { TokenCard } from "@/components/TokenCard";
 import { tokens } from "@/lib/mock-data";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Search, BarChart, Share2, Book, Wallet, Wand2, Braces, ShieldCheck, Users, Eye } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -13,9 +12,13 @@ import { Particles } from "@/components/Particles";
 import { GradientBlob } from "@/components/GradientBlob";
 import { Sparkles } from "@/components/Sparkles";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { MagicButton } from "@/components/MagicButton";
+import { GlassButton } from "@/components/GlassButton";
 
 const Index = () => {
   const [isWalletDialogOpen, setIsWalletDialogOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
@@ -25,11 +28,21 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground">
+    <div className="flex flex-col min-h-screen bg-background text-foreground overflow-x-hidden">
+      <Particles className="fixed inset-0 -z-10" quantity={50} />
+      <GradientBlob variant="lavender" className="fixed -top-80 -left-80 w-1/2 h-1/2 lg:w-1/3 lg:h-1/3" />
+      <GradientBlob variant="gold" className="fixed -bottom-80 -right-80 w-1/2 h-1/2 lg:w-1/3 lg:h-1/3" />
+      
       <Header onConnectClick={() => setIsWalletDialogOpen(true)} />
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="w-full py-20 md:py-28 lg:py-32">
+        <motion.section 
+          style={{ opacity: heroOpacity }}
+          className="w-full py-20 md:py-28 lg:py-32 relative"
+        >
+          <div className="absolute inset-0 -z-10 flex justify-center items-center">
+            <div className="w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl" />
+          </div>
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-6 text-center">
               <motion.div
@@ -56,27 +69,18 @@ const Index = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="space-x-4 pt-4"
+                className="flex flex-col sm:flex-row items-center gap-4 pt-4"
               >
-                <Button
-                  size="lg"
-                  className="rounded-full px-8 py-6 text-lg font-semibold"
-                  onClick={() => setIsWalletDialogOpen(true)}
-                >
+                <MagicButton onClick={() => setIsWalletDialogOpen(true)}>
                   Connect Wallet
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="rounded-full px-8 py-6 text-lg font-semibold bg-transparent"
-                  onClick={() => scrollToSection('launch')}
-                >
+                </MagicButton>
+                <GlassButton onClick={() => scrollToSection('launch')}>
                   Launch Token
-                </Button>
+                </GlassButton>
               </motion.div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Discover Section */}
         <section id="discover" className="w-full py-12 md:py-24">
@@ -85,8 +89,8 @@ const Index = () => {
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-heading">Trending Now</h2>
               <SortTabs />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
-                {tokens.map((token) => (
-                  <TokenCard key={token.id} token={token} />
+                {tokens.map((token, index) => (
+                  <TokenCard key={token.id} token={token} isFairyPick={index === 1} />
                 ))}
               </div>
             </div>
@@ -240,7 +244,7 @@ const Index = () => {
               ))}
             </div>
             <div className="relative mt-12 p-6 rounded-2xl border border-white/10 bg-white/5">
-              <div className="absolute left-8 right-8 top-1/2 h-0-5 bg-white/10" />
+              <div className="absolute left-8 right-8 top-1/2 h-0.5 bg-white/10" />
               <div className="relative flex justify-between">
                 {[
                   { year: "2025 Q4", event: "V1 Launch: Discovery & Analytics Suite." },
