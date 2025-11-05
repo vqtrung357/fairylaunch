@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { WalletButton } from "./wallet/ConnectButton";
+import { WalletButton } from "./WalletButton";
 
 export const Header = () => {
   return (
@@ -36,4 +36,3 @@ export const Header = () => {
       </nav>
     </header>
   );
-};
