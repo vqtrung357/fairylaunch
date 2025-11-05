@@ -57,7 +57,7 @@ const Index = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
       <Particles className="fixed inset-0 -z-10" quantity={50} />
       <GradientBlob variant="lavender" className="fixed -top-80 -left-80 w-1/2 h-1/2 lg:w-1/3 lg:h-1/3" />
       <GradientBlob variant="gold" className="fixed -bottom-80 -right-80 w-1/2 h-1/2 lg:w-1/3 lg:h-1/3" />
