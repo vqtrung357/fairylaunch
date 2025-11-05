@@ -30,7 +30,7 @@ export const HeroSpotlight = () => {
       transition={{ duration: 3, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
       whileHover={{ scale: 1.02, rotateY: 5 }}
       style={{ transformPerspective: "1000px" }}
-      className="relative bg-white/8 backdrop-blur-2xl border border-transparent rounded-3xl p-8 w-full max-w-4xl mx-auto before:absolute before:inset-0 before:-z-10 before:rounded-3xl before:bg-gradient-to-r before:from-[#B79CFF]/40 before:to-[#FFD876]/40 before:opacity-60 before:blur-md"
+      className="relative bg-white/8 backdrop-blur-xl border border-white/10 rounded-3xl p-8 w-full max-w-4xl mx-auto"
     >
       <div className="grid md:grid-cols-2 gap-8 items-center">
         <div className="flex flex-col items-center md:items-start text-center md:text-left">

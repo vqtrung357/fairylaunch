@@ -3,14 +3,13 @@ import { HeroSpotlight } from "@/components/HeroSpotlight";
 import { SortTabs } from "@/components/SortTabs";
 import { TokenCard } from "@/components/TokenCard";
 import { tokens } from "@/lib/mock-data";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Search, BarChart, Share2, Book, Wallet, Wand2, Braces, ShieldCheck, Users, Eye } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ConnectWalletDialog } from "@/components/ConnectWalletDialog";
 import { Particles } from "@/components/Particles";
 import { GradientBlob } from "@/components/GradientBlob";
-import { Sparkles } from "@/components/Sparkles";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MagicButton } from "@/components/MagicButton";
 import { GlassButton } from "@/components/GlassButton";
@@ -18,8 +17,6 @@ import { Mist } from "@/components/Mist";
 
 const Index = () => {
   const [isWalletDialogOpen, setIsWalletDialogOpen] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
@@ -46,6 +43,19 @@ const Index = () => {
     },
   };
 
+  const heroAnimation = {
+    hidden: { opacity: 0, y: 20 },
+    visible: (i: number) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    }),
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground overflow-x-hidden">
       <Particles className="fixed inset-0 -z-10" quantity={50} />
@@ -55,51 +65,67 @@ const Index = () => {
       <Header onConnectClick={() => setIsWalletDialogOpen(true)} />
       <main className="flex-1">
         {/* Hero Section */}
-        <motion.section 
-          style={{ opacity: heroOpacity }}
-          className="w-full py-20 md:py-28 lg:py-32 relative"
-        >
-          <div className="absolute inset-0 -z-10 flex justify-center items-center">
-            <div className="w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl" />
-          </div>
+        <section className="w-full py-20 md:py-28 lg:py-32 relative overflow-hidden">
+          <div className="absolute inset-0 -z-10 bg-gradient-to-b from-[#08070F] via-[#0D0A18] to-[#16122D]" />
+          <Particles className="absolute inset-0 -z-20 opacity-30" quantity={100} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/3 h-2/3 bg-primary/10 rounded-full blur-3xl -z-10" />
+
           <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center space-y-6 text-center">
+            <div className="flex flex-col items-center space-y-8 text-center">
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                className="flex flex-col items-center space-y-6"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  visible: { transition: { staggerChildren: 0.2 } }
+                }}
               >
-                <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400 font-heading">
-                  Track emerging tokens before they go viral.
-                </h1>
-                <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl mt-4">
+                <motion.h1 
+                  variants={heroAnimation}
+                  custom={0}
+                  className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl/none bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400 font-heading"
+                >
+                  Track <span className="text-shimmer">emerging tokens</span><br />before they go viral.
+                </motion.h1>
+                <motion.p 
+                  variants={heroAnimation}
+                  custom={1}
+                  className="mx-auto max-w-[700px] text-muted-foreground md:text-xl"
+                >
                   Discover fair launches, watch momentum, and back what you love.
-                </p>
+                </motion.p>
               </motion.div>
+
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
+                initial="hidden"
+                animate="visible"
+                variants={heroAnimation}
+                custom={2}
                 className="w-full"
               >
                 <HeroSpotlight />
               </motion.div>
+
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex flex-col sm:flex-row items-center gap-4 pt-4"
+                initial="hidden"
+                animate="visible"
+                variants={heroAnimation}
+                custom={3}
+                className="flex flex-col items-center gap-4 pt-4"
               >
-                <MagicButton onClick={() => setIsWalletDialogOpen(true)}>
-                  Connect Wallet
-                </MagicButton>
-                <GlassButton onClick={() => scrollToSection('launch')}>
-                  Launch Token
-                </GlassButton>
+                <div className="flex flex-col sm:flex-row items-center gap-4">
+                  <MagicButton onClick={() => setIsWalletDialogOpen(true)}>
+                    Connect Wallet
+                  </MagicButton>
+                  <GlassButton onClick={() => scrollToSection('launch')}>
+                    Launch Token
+                  </GlassButton>
+                </div>
+                <p className="mt-2 text-xs text-muted-foreground">UI Demo Only — No real wallet connection</p>
               </motion.div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Discover Section */}
         <section id="discover" className="relative w-full py-12 md:py-24 bg-gradient-to-b from-[#0B0A14] via-[#120F26] to-[#1C1539] overflow-hidden border-t border-white/10">
