@@ -166,14 +166,14 @@ const Index = () => {
           <div className="container max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-heading">Documentation</h2>
-              <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">Everything you need to navigate the demo—from first steps to the launch wizard.</p>
+              <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">Everything you need to launch your token or discover the next big thing on Solana.</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {[
-                { icon: Book, title: "Getting Started", desc: "Understand the flow and where to begin." },
-                { icon: Wallet, title: "Connect Wallet (Mock)", desc: "Beautiful UI demo—no real chain calls." },
-                { icon: Wand2, title: "Launch Wizard", desc: "Four steps: Basics, Branding, Socials, Preview." },
-                { icon: Braces, title: "API (Coming Soon)", desc: "Public endpoints for stats & discovery." },
+                { icon: Book, title: "Getting Started", desc: "Your first steps to launching a token or finding new projects." },
+                { icon: Wallet, title: "Wallet Integration", desc: "Securely connect your Solana wallet to interact with the platform." },
+                { icon: Wand2, title: "Launch Wizard", desc: "Our step-by-step guide to creating your token, setting up liquidity, and launching." },
+                { icon: Braces, title: "Developer API", desc: "Access real-time launch data and integrate Fairy Launch into your own applications." },
               ].map(({ icon: Icon, title, desc }) => (
                 <motion.div
                   key={title}
@@ -189,9 +189,10 @@ const Index = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="font-mono text-sm bg-[#0E0B1A]/80 rounded-2xl border border-white/10 p-6">
                 <pre><code className="text-muted-foreground">
-                  <span className="text-primary">pnpm</span> i<br />
-                  <span className="text-primary">pnpm</span> dev<br />
-                  <span className="text-success/80"># UI-only demo — no on-chain actions</span>
+                  <span className="text-primary">import</span> {'{'} <span className="text-secondary">FairyLaunch</span> {'}'} <span className="text-primary">from</span> <span className="text-success">'@fairylaunch/sdk'</span>;<br /><br />
+                  <span className="text-primary">const</span> fairy = <span className="text-primary">new</span> <span className="text-secondary">FairyLaunch</span>();<br />
+                  <span className="text-primary">const</span> trending = <span className="text-primary">await</span> fairy.<span className="text-foreground">getTrendingTokens</span>();<br />
+                  <span className="text-muted-foreground/80">// Returns the top 10 trending tokens</span>
                 </code></pre>
               </div>
               <Accordion type="single" collapsible className="w-full">
@@ -239,7 +240,7 @@ const Index = () => {
               ))}
             </div>
             <div className="relative mt-12 p-6 rounded-2xl border border-white/10 bg-white/5">
-              <div className="absolute left-8 right-8 top-1/2 h-0.5 bg-white/10" />
+              <div className="absolute left-8 right-8 top-1/2 h-0-5 bg-white/10" />
               <div className="relative flex justify-between">
                 {[
                   { year: "2025 Q4", event: "V1 Launch: Discovery & Analytics Suite." },
