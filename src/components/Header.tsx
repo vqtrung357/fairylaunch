@@ -1,7 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
+interface HeaderProps {
+  onConnectClick: () => void;
+}
+
+export const Header = ({ onConnectClick }: HeaderProps) => {
   return (
     <header className="px-4 lg:px-6 h-16 flex items-center bg-transparent sticky top-0 z-50 backdrop-blur-lg border-b border-white/10">
       <Link to="/" className="flex items-center justify-center">
@@ -32,7 +36,7 @@ export const Header = () => {
         >
           About
         </Link>
-        <Button>Connect Wallet</Button>
+        <Button onClick={onConnectClick}>Connect Wallet</Button>
       </nav>
     </header>
   );

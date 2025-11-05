@@ -1,18 +1,21 @@
+import { useState } from "react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
 import { HeroSpotlight } from "@/components/HeroSpotlight";
 import { SortTabs } from "@/components/SortTabs";
 import { TokenCard } from "@/components/TokenCard";
 import { tokens } from "@/lib/mock-data";
 import { motion } from "framer-motion";
 import { Search, BarChart, Share2 } from "lucide-react";
+import { ConnectWalletDialog } from "@/components/ConnectWalletDialog";
 
 const Index = () => {
+  const [isWalletDialogOpen, setIsWalletDialogOpen] = useState(false);
+
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <Header />
+      <Header onConnectClick={() => setIsWalletDialogOpen(true)} />
       <main className="flex-1">
         {/* Hero Section */}
         <section className="w-full py-20 md:py-28 lg:py-32">
@@ -44,7 +47,11 @@ const Index = () => {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 className="space-x-4 pt-4"
               >
-                <Button size="lg" className="rounded-full px-8 py-6 text-lg font-semibold">
+                <Button
+                  size="lg"
+                  className="rounded-full px-8 py-6 text-lg font-semibold"
+                  onClick={() => setIsWalletDialogOpen(true)}
+                >
                   Connect Wallet
                 </Button>
                 <Button variant="outline" size="lg" className="rounded-full px-8 py-6 text-lg font-semibold bg-transparent">
@@ -98,6 +105,7 @@ const Index = () => {
         </section>
       </main>
       <Footer />
+      <ConnectWalletDialog open={isWalletDialogOpen} onOpenChange={setIsWalletDialogOpen} />
     </div>
   );
 };
