@@ -242,9 +242,9 @@ const Index = () => {
               <div className="absolute left-8 right-8 top-1/2 h-0.5 bg-white/10" />
               <div className="relative flex justify-between">
                 {[
-                  { year: "2025 Q4", event: "Concept & UI demo released." },
-                  { year: "2026 Q1", event: "Expanded discovery features." },
-                  { year: "2026 Q2", event: "Launchpad beta (invite-only)." },
+                  { year: "2025 Q4", event: "V1 Launch: Discovery & Analytics Suite." },
+                  { year: "2026 Q1", event: "Launchpad V1: Fair Launch Protocol." },
+                  { year: "2026 Q2", event: "Creator Toolkit & Governance Beta." },
                 ].map(({ year, event }) => (
                   <div key={year} className="relative flex flex-col items-center">
                     <div className="absolute -top-1.5 w-4 h-4 rounded-full bg-primary/50 border-2 border-primary animate-pulse" />
