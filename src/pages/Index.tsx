@@ -3,23 +3,21 @@ import { HeroSpotlight } from "@/components/HeroSpotlight";
 import { SortTabs } from "@/components/SortTabs";
 import { TokenCard } from "@/components/TokenCard";
 import { tokens } from "@/lib/mock-data";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { Search, BarChart, Share2, Book, Wallet, Wand2, Braces, ShieldCheck, Users, Eye } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ConnectWalletDialog } from "@/components/ConnectWalletDialog";
 import { Particles } from "@/components/Particles";
 import { GradientBlob } from "@/components/GradientBlob";
-import { Sparkles } from "@/components/Sparkles";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MagicButton } from "@/components/MagicButton";
 import { GlassButton } from "@/components/GlassButton";
 import { Mist } from "@/components/Mist";
+import { FairyMascot } from "@/components/FairyMascot";
 
 const Index = () => {
   const [isWalletDialogOpen, setIsWalletDialogOpen] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
@@ -48,34 +46,41 @@ const Index = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground overflow-x-hidden">
-      <Particles className="fixed inset-0 -z-10" quantity={50} />
-      <GradientBlob variant="lavender" className="fixed -top-80 -left-80 w-1/2 h-1/2 lg:w-1/3 lg:h-1/3" />
-      <GradientBlob variant="gold" className="fixed -bottom-80 -right-80 w-1/2 h-1/2 lg:w-1/3 lg:h-1/3" />
-      
       <Header onConnectClick={() => setIsWalletDialogOpen(true)} />
       <main className="flex-1">
         {/* Hero Section */}
-        <motion.section 
-          style={{ opacity: heroOpacity }}
-          className="w-full py-20 md:py-28 lg:py-32 relative"
-        >
-          <div className="absolute inset-0 -z-10 flex justify-center items-center">
-            <div className="w-1/2 h-1/2 bg-primary/10 rounded-full blur-3xl" />
-          </div>
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center space-y-6 text-center">
+        <section className="relative w-full py-20 md:py-28 lg:py-32 overflow-hidden">
+          <div className="absolute inset-0 -z-20 bg-gradient-to-b from-[#0A0815] via-[#120E25] to-[#1A1537]" />
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0)_50%,_rgba(0,0,0,0.7)_100%)]" />
+          <Particles className="absolute inset-0 -z-10 opacity-50" quantity={80} />
+          <GradientBlob variant="lavender" className="absolute -top-40 -left-40 w-1/2 h-1/2 lg:w-1/3 lg:h-1/3 opacity-30" />
+          <motion.div
+            className="absolute rounded-full mix-blend-lighten filter blur-3xl opacity-20 bg-gradient-to-br from-[#FFBCEC] to-[#FF89D7]"
+            style={{ top: '-10rem', right: '10rem', width: '30rem', height: '30rem' }}
+            animate={{ x: ["0%", "5%", "-10%", "0%"], y: ["0%", "10%", "-5%", "0%"] }}
+            transition={{ duration: 25, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}
+          />
+
+          <div className="container px-4 md:px-6 grid md:grid-cols-2 gap-16 items-center relative z-10">
+            <div className="hidden md:flex justify-center items-center">
+              <FairyMascot />
+            </div>
+
+            <div className="flex flex-col items-center md:items-start space-y-8">
               <motion.div
+                className="text-center md:text-left"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
               >
                 <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none bg-clip-text text-transparent bg-gradient-to-br from-white to-gray-400 font-heading">
-                  Track emerging tokens before they go viral.
+                  Track emerging <span className="[text-shadow:0_0_15px_hsl(var(--primary))]">tokens</span> before they go <span className="[text-shadow:0_0_15px_hsl(var(--secondary))]">viral.</span>
                 </h1>
                 <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl mt-4">
                   Discover fair launches, watch momentum, and back what you love.
                 </p>
               </motion.div>
+              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -84,11 +89,12 @@ const Index = () => {
               >
                 <HeroSpotlight />
               </motion.div>
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex flex-col sm:flex-row items-center gap-4 pt-4"
+                className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 w-full"
               >
                 <MagicButton onClick={() => setIsWalletDialogOpen(true)}>
                   Connect Wallet
@@ -99,13 +105,12 @@ const Index = () => {
               </motion.div>
             </div>
           </div>
-        </motion.section>
+        </section>
 
         {/* Discover Section */}
         <section id="discover" className="relative w-full py-12 md:py-24 bg-gradient-to-b from-[#0B0A14] via-[#120F26] to-[#1C1539] overflow-hidden border-t border-white/10">
           <div className="absolute top-0 left-0 right-0 h-48 bg-background -translate-y-1/2" style={{ maskImage: 'radial-gradient(100% 100% at 50% 100%, black 40%, transparent 80%)' }}></div>
           
-          {/* Background Elements */}
           <GradientBlob variant="lavender" className="absolute -top-20 -left-40 w-1/2 h-1/2 opacity-15" />
           <GradientBlob variant="gold" className="absolute -bottom-20 -right-40 w-1/3 h-1/3 opacity-10" />
           <Particles quantity={30} className="absolute inset-0 opacity-50" />
