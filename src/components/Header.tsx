@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { WalletButton } from "./WalletButton";
+import { WalletButton } from "./wallet/ConnectButton";
 
 export const Header = () => {
   return (
