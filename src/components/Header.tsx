@@ -1,5 +1,5 @@
+import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { WalletButton } from "./WalletButton";
 
 export const Header = () => {
   return (
@@ -32,7 +32,8 @@ export const Header = () => {
         >
           About
         </Link>
-        <WalletButton />
+        <Button>Connect Wallet</Button>
       </nav>
     </header>
   );
+};
