@@ -1,115 +1,93 @@
-export interface Token {
+export type Token = {
   id: string;
   name: string;
   ticker: string;
   avatar: string;
   marketCap: number;
   volume24h: number;
-  liquidity: number;
-  holders: number;
-  price: number;
   change24hPct: number;
   launchedAgo: string;
-  category: string[];
-  socials: { web?: string; x?: string; tg?: string; disc?: string };
-  badges: ("Hot" | "Moon" | "New")[];
-}
+  socials: {
+    web?: string;
+    x?: string;
+    tg?: string;
+  };
+  badges: ('audited' | 'kyc' | 'trending' | 'new')[];
+};
 
-export const TOKENS: Token[] = [
+export const tokens: Token[] = [
   {
-    id: "lamoon",
-    name: "LAMOON",
-    ticker: "LMN",
-    avatar: "/pics/lamoon.png",
-    marketCap: 12874375,
-    volume24h: 120000,
-    liquidity: 500000,
-    holders: 8104,
-    price: 0.00128,
-    change24hPct: 5.9,
-    launchedAgo: "16h",
-    category: ["Meme", "Community"],
-    socials: { web: "#", x: "#", tg: "#" },
-    badges: ["Hot", "Moon"],
+    id: 'stardust',
+    name: 'Stardust',
+    ticker: 'STARD',
+    avatar: '/pics/stardust.png',
+    marketCap: 1_250_000,
+    volume24h: 85_000,
+    change24hPct: 12.5,
+    launchedAgo: '3 days',
+    socials: { web: '#', x: '#', tg: '#' },
+    badges: ['trending', 'new'],
   },
   {
-    id: "quack",
-    name: "QUACK",
-    ticker: "QCK",
-    avatar: "/pics/quack.png",
-    marketCap: 9478000,
-    volume24h: 86000,
-    liquidity: 350000,
-    holders: 5100,
-    price: 0.00094,
-    change24hPct: -2.3,
-    launchedAgo: "1d",
-    category: ["Meme"],
-    socials: { web: "#", x: "#", tg: "#" },
-    badges: ["New"],
+    id: 'memeow',
+    name: 'MeMeow',
+    ticker: 'MEOW',
+    avatar: '/pics/memeow.png',
+    marketCap: 8_700_000,
+    volume24h: 1_200_000,
+    change24hPct: 45.2,
+    launchedAgo: '1 week',
+    socials: { web: '#', x: '#', tg: '#' },
+    badges: ['trending', 'audited'],
   },
   {
-    id: "stardust",
-    name: "Stardust",
-    ticker: "DUST",
-    avatar: "/pics/stardust.png",
-    marketCap: 25000000,
-    volume24h: 500000,
-    liquidity: 1200000,
-    holders: 12500,
-    price: 0.025,
-    change24hPct: 15.2,
-    launchedAgo: "3h",
-    category: ["Utility", "Gaming"],
-    socials: { web: "#", x: "#", tg: "#", disc: "#" },
-    badges: ["Hot", "New"],
+    id: 'quack',
+    name: 'Quack',
+    ticker: 'QUACK',
+    avatar: '/pics/quack.png',
+    marketCap: 450_000,
+    volume24h: 32_000,
+    change24hPct: -5.8,
+    launchedAgo: '1 day',
+    socials: { x: '#', tg: '#' },
+    badges: ['new', 'kyc'],
   },
   {
-    id: "pixie",
-    name: "Pixie",
-    ticker: "PIX",
-    avatar: "/pics/pixie.png",
-    marketCap: 5600000,
-    volume24h: 45000,
-    liquidity: 200000,
-    holders: 3200,
-    price: 0.00056,
-    change24hPct: 1.1,
-    launchedAgo: "3d",
-    category: ["Community"],
-    socials: { x: "#", tg: "#" },
-    badges: [],
+    id: 'pixie',
+    name: 'Pixie',
+    ticker: 'PIX',
+    avatar: '/pics/pixie.png',
+    marketCap: 2_100_000,
+    volume24h: 150_000,
+    change24hPct: 8.1,
+    launchedAgo: '2 weeks',
+    socials: { web: '#', tg: '#' },
+    badges: ['audited'],
   },
   {
-    id: "solflare",
-    name: "SolFlare",
-    ticker: "SFLR",
-    avatar: "/pics/solflare.png",
-    marketCap: 18000000,
-    volume24h: 250000,
-    liquidity: 900000,
-    holders: 9800,
-    price: 0.018,
-    change24hPct: 8.7,
-    launchedAgo: "22h",
-    category: ["Utility"],
-    socials: { web: "#", x: "#" },
-    badges: ["Hot"],
+    id: 'solflare',
+    name: 'Solflare',
+    ticker: 'SFLR',
+    avatar: '/pics/solflare.png',
+    marketCap: 25_500_000,
+    volume24h: 3_400_000,
+    change24hPct: 2.3,
+    launchedAgo: '1 month',
+    socials: { web: '#', x: '#', tg: '#' },
+    badges: ['audited', 'kyc'],
   },
   {
-    id: "memeow",
-    name: "MeMeow",
-    ticker: "MEOW",
-    avatar: "/pics/memeow.png",
-    marketCap: 7800000,
-    volume24h: 110000,
-    liquidity: 300000,
-    holders: 6500,
-    price: 0.00078,
-    change24hPct: -5.5,
-    launchedAgo: "2d",
-    category: ["Meme"],
-    socials: { x: "#", tg: "#" },
+    id: 'lamoon',
+    name: 'LaMoon',
+    ticker: 'LMN',
+    avatar: '/pics/lamoon.png',
+    marketCap: 780_000,
+    volume24h: 65_000,
+    change24hPct: -1.2,
+    launchedAgo: '5 days',
+    socials: { x: '#', tg: '#' },
     badges: [],
   },
 ];
+
+export const heroToken = tokens[1];
