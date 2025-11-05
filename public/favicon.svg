@@ -1,0 +1,23 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&amp;display=swap');
+    </style>
+    <defs>
+        <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#B79CFF"/>
+            <stop offset="100%" stop-color="#FFD876"/>
+        </linearGradient>
+    </defs>
+    <rect width="256" height="256" rx="60" fill="#141228"/>
+    <text
+        x="50%"
+        y="55%"
+        dominant-baseline="middle"
+        text-anchor="middle"
+        font-family="Pacifico, cursive"
+        font-size="180"
+        fill="url(#grad)"
+    >
+        F
+    </text>
+</svg>
