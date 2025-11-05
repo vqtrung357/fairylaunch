@@ -21,8 +21,12 @@ export const TokenCard = ({ token, isFairyPick = false }: TokenCardProps) => {
 
   return (
     <motion.div
-      whileHover={{ y: -8, scale: 1.03, boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.2)" }}
-      className="relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-4 flex flex-col gap-4 transition-all duration-300 hover:border-primary/30 cursor-wand"
+      whileHover={{ 
+        y: -8, 
+        scale: 1.03, 
+        boxShadow: "0px 20px 40px rgba(0, 0, 0, 0.3), inset 0px 0px 15px rgba(183, 156, 255, 0.2)" 
+      }}
+      className="relative bg-white/5 backdrop-blur-lg border border-white/10 rounded-3xl p-4 flex flex-col gap-4 transition-all duration-300 hover:border-primary/30 cursor-wand shadow-xl shadow-black/30"
     >
       {isFairyPick && <div className="absolute -top-3 -right-3"><Badge type="Fairy Pick" /></div>}
       <div className="flex items-center gap-3">

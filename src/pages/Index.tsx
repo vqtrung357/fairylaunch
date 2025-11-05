@@ -14,6 +14,7 @@ import { Sparkles } from "@/components/Sparkles";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MagicButton } from "@/components/MagicButton";
 import { GlassButton } from "@/components/GlassButton";
+import { Mist } from "@/components/Mist";
 
 const Index = () => {
   const [isWalletDialogOpen, setIsWalletDialogOpen] = useState(false);
@@ -25,6 +26,24 @@ const Index = () => {
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const gridContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const gridItemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
   };
 
   return (
@@ -83,16 +102,38 @@ const Index = () => {
         </motion.section>
 
         {/* Discover Section */}
-        <section id="discover" className="w-full py-12 md:py-24">
-          <div className="container px-4 md:px-6">
+        <section id="discover" className="relative w-full py-12 md:py-24 bg-gradient-to-b from-[#0B0A14] via-[#120F26] to-[#1C1539] overflow-hidden border-t border-white/10">
+          <div className="absolute top-0 left-0 right-0 h-48 bg-background -translate-y-1/2" style={{ maskImage: 'radial-gradient(100% 100% at 50% 100%, black 40%, transparent 80%)' }}></div>
+          
+          {/* Background Elements */}
+          <GradientBlob variant="lavender" className="absolute -top-20 -left-40 w-1/2 h-1/2 opacity-15" />
+          <GradientBlob variant="gold" className="absolute -bottom-20 -right-40 w-1/3 h-1/3 opacity-10" />
+          <Particles quantity={30} className="absolute inset-0 opacity-50" />
+          <Mist />
+
+          <div className="container relative z-10 px-4 md:px-6">
             <div className="flex flex-col items-center gap-8">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-heading">Trending Now</h2>
-              <SortTabs />
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl">
-                {tokens.map((token, index) => (
-                  <TokenCard key={token.id} token={token} isFairyPick={index === 1} />
-                ))}
+              <div className="relative">
+                <h2 className="flex items-center gap-3 text-3xl font-bold tracking-tighter sm:text-4xl font-heading [text-shadow:0_0_15px_hsl(var(--primary))]">
+                  <Wand2 className="w-8 h-8 text-primary" />
+                  Trending Now
+                </h2>
+                <div className="absolute -inset-4 bg-primary/20 rounded-full blur-2xl -z-10"></div>
               </div>
+              <SortTabs />
+              <motion.div 
+                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl"
+                variants={gridContainerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+              >
+                {tokens.map((token, index) => (
+                  <motion.div key={token.id} variants={gridItemVariants}>
+                    <TokenCard token={token} isFairyPick={index === 1} />
+                  </motion.div>
+                ))}
+              </motion.div>
             </div>
           </div>
         </section>
