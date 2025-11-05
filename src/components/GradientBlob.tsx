@@ -3,13 +3,14 @@ import { cn } from "@/lib/utils";
 
 interface GradientBlobProps {
   className?: string;
-  variant?: "lavender" | "gold";
+  variant?: "lavender" | "gold" | "pink";
 }
 
 export const GradientBlob = ({ className, variant = "lavender" }: GradientBlobProps) => {
   const variants = {
     lavender: "bg-gradient-to-br from-[#B79CFF] to-[#9A7BFF]",
     gold: "bg-gradient-to-br from-[#FFD876] to-[#FFC36A]",
+    pink: "bg-gradient-to-br from-[#FFBCEC] to-[#FF89D7]",
   };
 
   return (
