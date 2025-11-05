@@ -5,10 +5,14 @@ import { SortTabs } from "@/components/SortTabs";
 import { TokenCard } from "@/components/TokenCard";
 import { tokens } from "@/lib/mock-data";
 import { motion } from "framer-motion";
-import { Search, BarChart, Share2 } from "lucide-react";
+import { Search, BarChart, Share2, Book, Wallet, Wand2, Braces, ShieldCheck, Users, Eye } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ConnectWalletDialog } from "@/components/ConnectWalletDialog";
+import { Particles } from "@/components/Particles";
+import { GradientBlob } from "@/components/GradientBlob";
+import { Sparkles } from "@/components/Sparkles";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const Index = () => {
   const [isWalletDialogOpen, setIsWalletDialogOpen] = useState(false);
@@ -116,41 +120,140 @@ const Index = () => {
           </div>
         </section>
 
-        {/* Launch Section */}
-        <section id="launch" className="w-full py-12 md:py-24">
-          <div className="container text-center">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-heading mb-4">Launch Your Token</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Ready to launch your own token? Our magical launchpad is coming soon to make it easy, fair, and secure for everyone involved.
-            </p>
-          </div>
-        </section>
-
-        {/* Docs Section */}
-        <section id="docs" className="w-full py-12 md:py-24 bg-card/20">
-          <div className="container max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-heading mb-8 text-center">Documentation</h2>
-            <div className="prose prose-invert max-w-none bg-card/50 p-8 rounded-3xl border border-white/10">
-              <h2>Getting Started</h2>
-              <p>Welcome to the Fairy Launch documentation. Here you'll find everything you need to know about using our platform, from discovering new tokens to launching your own project.</p>
-              <h3>Connecting Your Wallet</h3>
-              <p>To get started, you'll need a Solana-compatible wallet. We recommend Phantom, Solflare, or Backpack. Click the "Connect Wallet" button in the top-right corner and approve the connection in your wallet extension.</p>
-              <h2>For Developers</h2>
-              <p>If you're a developer looking to launch a token, this section is for you. Our platform provides a seamless and secure way to conduct a fair launch.</p>
+        {/* NEW Launch Section */}
+        <section id="launch" className="relative w-full py-20 md:py-28 overflow-hidden bg-gradient-to-b from-[#0B0A12] to-[#15122B]">
+          <Particles className="opacity-50" />
+          <GradientBlob variant="lavender" className="top-0 left-0 w-1/2 h-1/2" />
+          <GradientBlob variant="gold" className="bottom-0 right-0 w-1/3 h-1/3" />
+          <div className="container relative z-10 flex flex-col items-center gap-12">
+            <div className="w-full max-w-3xl text-center backdrop-blur-xl bg-white/10 border border-white/15 rounded-3xl shadow-[0_0_60px_rgba(183,156,255,0.15)] p-8 md:p-12">
+              <h2 className="text-4xl font-bold font-heading">Launch Your Token</h2>
+              <p className="mt-4 max-w-xl mx-auto text-muted-foreground">
+                A guided, fair, and delightful way to launch your idea. Our magical launchpad (UI demo) helps you prep branding, lore, and socials—no code required.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <Button size="lg" className="relative overflow-hidden bg-[#B79CFF] hover:bg-[#a78bff] text-[#0B0A12] font-semibold rounded-full px-8 py-6 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD876]/70">
+                  <Sparkles />
+                  Start Launch Wizard
+                </Button>
+                <Button variant="ghost" size="lg" className="bg-white/10 hover:bg-white/15 border border-white/20 rounded-full px-8 py-6 text-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFD876]/70">
+                  See How It Works
+                </Button>
+              </div>
+              <p className="mt-6 text-xs text-muted-foreground">UI demo • No on-chain actions • Designed for Solana creators</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-5xl">
+              {[
+                { title: "Transparent by Design", desc: "Clear steps, previewable outcomes, and visible parameters." },
+                { title: "Fair from Day One", desc: "No hidden switches. Everyone sees the same information." },
+                { title: "Secure UX Patterns", desc: "Guided flows reduce misclicks and common mistakes." },
+              ].map(card => (
+                <motion.div
+                  key={card.title}
+                  whileHover={{ y: -4 }}
+                  className="relative p-6 rounded-2xl border border-white/10 bg-white/5 hover:bg-white/8 transition-all duration-300 before:absolute before:inset-0 before:rounded-2xl before:p-[1px] before:bg-gradient-to-r before:from-[#B79CFF]/60 before:to-[#FFD876]/60 before:opacity-0 hover:before:opacity-100 before:transition"
+                >
+                  <h3 className="font-bold font-heading">{card.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{card.desc}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* About Section */}
-        <section id="about" className="w-full py-12 md:py-24">
+        {/* NEW Docs Section */}
+        <section id="docs" className="w-full py-12 md:py-24">
+          <div className="container max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-heading">Documentation</h2>
+              <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">Everything you need to navigate the demo—from first steps to the launch wizard.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+              {[
+                { icon: Book, title: "Getting Started", desc: "Understand the flow and where to begin." },
+                { icon: Wallet, title: "Connect Wallet (Mock)", desc: "Beautiful UI demo—no real chain calls." },
+                { icon: Wand2, title: "Launch Wizard", desc: "Four steps: Basics, Branding, Socials, Preview." },
+                { icon: Braces, title: "API (Coming Soon)", desc: "Public endpoints for stats & discovery." },
+              ].map(({ icon: Icon, title, desc }) => (
+                <motion.div
+                  key={title}
+                  whileHover={{ y: -4 }}
+                  className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/8 transition-all duration-300 before:absolute before:inset-0 before:rounded-2xl before:p-[1px] before:bg-gradient-to-r before:from-[#B79CFF]/60 before:to-[#FFD876]/60 before:opacity-0 hover:before:opacity-100 before:transition"
+                >
+                  <Icon className="w-8 h-8 text-primary mb-4" />
+                  <h3 className="font-bold font-heading">{title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
+                </motion.div>
+              ))}
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="font-mono text-sm bg-[#0E0B1A]/80 rounded-2xl border border-white/10 p-6">
+                <pre><code className="text-muted-foreground">
+                  <span className="text-primary">pnpm</span> i<br />
+                  <span className="text-primary">pnpm</span> dev<br />
+                  <span className="text-success/80"># UI-only demo — no on-chain actions</span>
+                </code></pre>
+              </div>
+              <Accordion type="single" collapsible className="w-full">
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>Is this a real launchpad?</AccordionTrigger>
+                  <AccordionContent>This demo showcases the UX only.</AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-2">
+                  <AccordionTrigger>Which wallets are supported?</AccordionTrigger>
+                  <AccordionContent>Phantom, Solflare, Backpack (mock).</AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-3">
+                  <AccordionTrigger>Can I customize themes?</AccordionTrigger>
+                  <AccordionContent>Yes. Edit Tailwind tokens and gradients.</AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </div>
+          </div>
+        </section>
+
+        {/* NEW About Section */}
+        <section id="about" className="w-full py-12 md:py-24 bg-card/20">
           <div className="container max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-heading mb-4">About Fairy Launch</h2>
-            <p className="text-xl text-muted-foreground mb-8">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl font-heading">About Fairy Launch</h2>
+            <p className="mt-2 text-muted-foreground max-w-2xl mx-auto">
               We believe in the magic of fair launches and community-driven projects.
             </p>
-            <div className="prose prose-invert max-w-none text-left bg-card/50 p-8 rounded-3xl border border-white/10">
-              <h2>Our Mission</h2>
-              <p>Our mission is to create a transparent, secure, and accessible platform for discovering and launching new tokens on the Solana blockchain. We aim to empower both creators and investors by providing the tools they need to succeed in a decentralized world.</p>
+            <div className="mt-12 backdrop-blur-xl bg-white/10 border border-white/15 rounded-3xl p-8 text-left">
+              <h3 className="text-2xl font-bold font-heading text-center">Our Mission</h3>
+              <p className="mt-4 text-center text-muted-foreground max-w-2xl mx-auto">
+                Our mission is to create a transparent, secure, and accessible platform for discovering and launching new tokens on the Solana blockchain. We aim to empower both creators and investors by providing the tools they need to succeed in a decentralized world.
+              </p>
+            </div>
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                { icon: Eye, title: "Transparency", desc: "Metrics and rules up front." },
+                { icon: ShieldCheck, title: "Security", desc: "UI patterns that guide safer actions." },
+                { icon: Users, title: "Community First", desc: "Fair discovery and storytelling." },
+              ].map(({ icon: Icon, title, desc }) => (
+                <div key={title} className="p-6 rounded-2xl border border-white/10 bg-white/5">
+                  <Icon className="w-8 h-8 text-primary mx-auto mb-4" />
+                  <h3 className="font-bold font-heading">{title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="relative mt-12 p-6 rounded-2xl border border-white/10 bg-white/5">
+              <div className="absolute left-8 right-8 top-1/2 h-0.5 bg-white/10" />
+              <div className="relative flex justify-between">
+                {[
+                  { year: "2025 Q4", event: "Concept & UI demo released." },
+                  { year: "2026 Q1", event: "Expanded discovery features." },
+                  { year: "2026 Q2", event: "Launchpad beta (invite-only)." },
+                ].map(({ year, event }) => (
+                  <div key={year} className="relative flex flex-col items-center">
+                    <div className="absolute -top-1.5 w-4 h-4 rounded-full bg-primary/50 border-2 border-primary animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-primary" />
+                    <p className="mt-4 text-sm font-bold">{year}</p>
+                    <p className="text-xs text-muted-foreground">{event}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
