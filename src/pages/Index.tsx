@@ -196,16 +196,16 @@ const Index = () => {
               </div>
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
-                  <AccordionTrigger>Is this a real launchpad?</AccordionTrigger>
-                  <AccordionContent>This demo showcases the UX only.</AccordionContent>
+                  <AccordionTrigger>What is a "fair launch"?</AccordionTrigger>
+                  <AccordionContent>A fair launch is a token distribution model where the token is immediately available to the public. There are no private sales or pre-sales, ensuring everyone gets access at the same price and time.</AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-2">
-                  <AccordionTrigger>Which wallets are supported?</AccordionTrigger>
-                  <AccordionContent>Phantom, Solflare, Backpack (mock).</AccordionContent>
+                  <AccordionTrigger>What fees does Fairy Launch charge?</AccordionTrigger>
+                  <AccordionContent>We charge a small, transparent platform fee on created liquidity pools. This helps us maintain the platform and develop new features. There are no hidden costs for creators or investors.</AccordionContent>
                 </AccordionItem>
                 <AccordionItem value="item-3">
-                  <AccordionTrigger>Can I customize themes?</AccordionTrigger>
-                  <AccordionContent>Yes. Edit Tailwind tokens and gradients.</AccordionContent>
+                  <AccordionTrigger>How do you ensure token safety?</AccordionTrigger>
+                  <AccordionContent>While we provide tools for transparency like liquidity locks and audit reports, always do your own research (DYOR). We aim to give you the best data, but cannot guarantee the success or safety of any project.</AccordionContent>
                 </AccordionItem>
               </Accordion>
             </div>
