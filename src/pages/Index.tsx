@@ -206,7 +206,7 @@ const Index = () => {
                 <AccordionItem value="item-2">
                   <AccordionTrigger>What fees does Fairy Launch charge?</AccordionTrigger>
                   <AccordionContent>We charge a small, transparent platform fee on created liquidity pools. This helps us maintain the platform and develop new features. There are no hidden costs for creators or investors.</AccordionContent>
-                </Iframe>
+                </AccordionItem>
                 <AccordionItem value="item-3">
                   <AccordionTrigger>How do you ensure token safety?</AccordionTrigger>
                   <AccordionContent>While we provide tools for transparency like liquidity locks and audit reports, always do your own research (DYOR). We aim to give you the best data, but cannot guarantee the success or safety of any project.</AccordionContent>
