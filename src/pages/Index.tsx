@@ -311,20 +311,41 @@ const Index = () => {
               ))}
             </div>
             <div className="relative mt-12 p-6 rounded-2xl border border-white/10 bg-white/5">
-              <div className="absolute left-8 right-8 top-1/2 h-0.5 bg-white/10" />
-              <div className="relative flex justify-between">
-                {[
-                  { year: "2025 Q4", event: "V1 Launch: Discovery & Analytics Suite." },
-                  { year: "2026 Q1", event: "Launchpad V1: Fair Launch Protocol." },
-                  { year: "2026 Q2", event: "Creator Toolkit & Governance Beta." },
-                ].map(({ year, event }) => (
-                  <div key={year} className="relative flex flex-col items-center">
-                    <div className="absolute -top-1.5 w-4 h-4 rounded-full bg-primary/50 border-2 border-primary animate-pulse" />
-                    <div className="w-2 h-2 rounded-full bg-primary" />
-                    <p className="mt-4 text-sm font-bold">{year}</p>
-                    <p className="text-xs text-muted-foreground">{event}</p>
-                  </div>
-                ))}
+              {/* Desktop Timeline */}
+              <div className="hidden md:block">
+                <div className="absolute left-8 right-8 top-1/2 -translate-y-1/2 h-0.5 bg-white/10" />
+                <div className="relative flex justify-between">
+                  {[
+                    { year: "2025 Q4", event: "V1 Launch: Discovery & Analytics Suite." },
+                    { year: "2026 Q1", event: "Launchpad V1: Fair Launch Protocol." },
+                    { year: "2026 Q2", event: "Creator Toolkit & Governance Beta." },
+                  ].map(({ year, event }) => (
+                    <div key={year} className="relative flex flex-col items-center text-center">
+                      <div className="absolute -top-1.5 w-4 h-4 rounded-full bg-primary/50 border-2 border-primary animate-pulse" />
+                      <div className="w-2 h-2 rounded-full bg-primary" />
+                      <p className="mt-4 text-sm font-bold">{year}</p>
+                      <p className="text-xs text-muted-foreground max-w-[200px]">{event}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Mobile Timeline */}
+              <div className="md:hidden relative">
+                <div className="absolute left-2 top-0 bottom-0 w-0.5 bg-white/10" />
+                <div className="flex flex-col gap-8">
+                  {[
+                    { year: "2025 Q4", event: "V1 Launch: Discovery & Analytics Suite." },
+                    { year: "2026 Q1", event: "Launchpad V1: Fair Launch Protocol." },
+                    { year: "2026 Q2", event: "Creator Toolkit & Governance Beta." },
+                  ].map(({ year, event }) => (
+                    <div key={year} className="relative pl-8">
+                      <div className="absolute -left-[7px] top-1 w-4 h-4 rounded-full bg-primary/50 border-2 border-primary animate-pulse" />
+                      <p className="text-sm font-bold">{year}</p>
+                      <p className="text-xs text-muted-foreground">{event}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
